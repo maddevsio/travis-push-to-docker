@@ -4,7 +4,8 @@ function tag_and_push {
 	if [ -n "$1" ] && [ -n "$IMAGE_NAME" ]; then
 		echo "Pushing docker image to hub tagged as $IMAGE_NAME:$1"
 		docker build -t $IMAGE_NAME:$1 -t $IMAGE_NAME -f Dockerfile_Travis .
-		docker push $IMAGE_NAME:$1 $IMAGE_NAME
+		docker push $IMAGE_NAME
+		docker push $IMAGE_NAME:$1
 	fi
 }
 
