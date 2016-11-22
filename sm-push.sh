@@ -11,14 +11,15 @@ function tag_and_push {
 VERSION_TAG=v.$TRAVIS_BUILD_NUMBER
 
 if [ "${TRAVIS_GO_VERSION}" = "${GO_FOR_RELEASE}" ]; then
-	cat > ~/.dockercfg <<EOF
-	{
-	  "https://index.docker.io/v1/": {
-	    "auth": "${HUB_AUTH}",
-	    "email": "${HUB_EMAIL}"
-	  }
-	}
-	EOF
+
+cat > ~/.dockercfg << EOF
+{
+  "https://index.docker.io/v1/": {
+    "auth": "${HUB_AUTH}",
+    "email": "${HUB_EMAIL}"
+  }
+}
+EOF
 
 	tag_and_push $VERSION_TAG
 else
